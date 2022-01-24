@@ -5,7 +5,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      displayInput: '',
+      displayInput: 0,
       answer: ''
     };
 
@@ -73,6 +73,11 @@ function Buttons(props) {
         <button className="btn" id="subtract">{'\u2212'}</button>
         <button className="number btn" id="zero">0</button>
         <button className="btn" id="equals">=</button>
+      </div>
+      <div className="clean-up">
+        <button>Del</button>
+        <button>AC</button>
+        <button>Off</button>
       </div>
     </div>
   );

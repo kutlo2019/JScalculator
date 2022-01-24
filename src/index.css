@@ -14,7 +14,7 @@ code {
 
 .App {
   width: 777px;
-  height: 564px;
+  height: fit-content;
   background-color: #3c6ab0;
   margin: 5rem auto;
   padding: 1rem;
@@ -44,22 +44,24 @@ code {
   height: 25%;
 }
 
-#display-input {
+#display-button {
+  text-align: right;
   width: 100%;
   height: 70%;
-  text-align: left;
 }
 
 .buttons {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-areas:  'numbers operations'
+                        'clean-up clean-up';
 
 }
 
 .numbers {
-  width: 70%;
+  /* width: 70%; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-area: numbers;
 }
 
 .numbers .number {
@@ -75,13 +77,25 @@ code {
 }
 
 .operations {
-  width: 30%;
+  /* width: 30%; */
   margin: 1rem;
   grid-gap: 1rem;
   display: grid;
   grid-template-areas:  'multiply divide'
                         'add subtract'
                         'zero equals';
+  grid-area: operations;
+}
+
+.clean-up {
+  grid-area: clean-up;
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem;
+}
+
+.clean-up button {
+  padding: 1rem;
 }
 
 button {
