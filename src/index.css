@@ -11,3 +11,82 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  width: 777px;
+  height: 564px;
+  background-color: #3c6ab0;
+  margin: 5rem auto;
+  padding: 1rem;
+  padding-bottom: 2rem;
+}
+
+#header {
+  text-align: center;
+}
+
+.display {
+  width: 682px;
+  height: 110px;
+  margin: 2rem auto;
+  border: 1px solid black;
+  background-color: beige;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.numbers {
+  width: 70%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.number {
+  width: 84px;
+  height: 84px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  margin: 1rem auto;
+}
+
+.operations {
+  width: 30%;
+  margin: 1rem;
+  grid-gap: 1rem;
+  display: grid;
+  grid-template-areas:  'multiply divide'
+                        'add subtract'
+                        'equals equals';
+}
+
+button {
+  font-size: 3rem;
+}
+
+#multiply {
+  grid-area: multiply;
+}
+
+#divide {
+  grid-area: divide;
+}
+
+#add {
+  grid-area: add;
+}
+
+#subtract {
+  grid-area: subtract;
+}
+
+#equals {
+  grid-area: equals;
+}
