@@ -5,11 +5,29 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      displayInput: 0,
+      displayInput: '0',
       answer: ''
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.clearScreen = this.clearScreen.bind(this);
+  }
+
+  clearScreen() {
+    this.setState({
+      displayInput: '0'
+    })
+  }
+
+  handleDelete() {
+      this.setState( state => {
+        const newDisplay = state.displayInput.slice(0,-1)
+        return {
+          displayInput: newDisplay
+        }
+      }
+    )
   }
 
   handleClick(e) {
@@ -29,7 +47,11 @@ class App extends React.Component {
           <div id="answer"></div>
           <div id="display-button">{this.state.displayInput}</div>
         </div>
-        <Buttons handleClick={this.handleClick} />
+        <Buttons 
+          handleClick={this.handleClick}
+          handleDelete={this.handleDelete}
+          clearScreen={this.clearScreen}
+        />
       </div>
     );
   }
@@ -75,8 +97,8 @@ function Buttons(props) {
         <button className="btn" id="equals">=</button>
       </div>
       <div className="clean-up">
-        <button>Del</button>
-        <button>AC</button>
+        <button onClick={props.handleDelete}>Del</button>
+        <button onClick={props.clearScreen}>AC</button>
         <button>Off</button>
       </div>
     </div>
