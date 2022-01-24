@@ -1,8 +1,8 @@
+@import url('http://fonts.cdnfonts.com/css/led-digital-7');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Poppins';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -26,11 +26,28 @@ code {
 }
 
 .display {
+  font-size: 3rem;
   width: 682px;
   height: 110px;
   margin: 2rem auto;
   border: 1px solid black;
   background-color: beige;
+  font-family: 'LED Digital 7', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+#answer {
+  width: 100%;
+  height: 25%;
+}
+
+#display-input {
+  width: 100%;
+  height: 70%;
+  text-align: left;
 }
 
 .buttons {
@@ -45,7 +62,7 @@ code {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.number {
+.numbers .number {
   width: 84px;
   height: 84px;
   display: flex;
@@ -64,7 +81,7 @@ code {
   display: grid;
   grid-template-areas:  'multiply divide'
                         'add subtract'
-                        'equals equals';
+                        'zero equals';
 }
 
 button {
@@ -89,4 +106,12 @@ button {
 
 #equals {
   grid-area: equals;
+  background: #03A900;
+
+}
+
+#zero {
+  grid-area: zero;
+  background: #000;
+  color: #fff;
 }
