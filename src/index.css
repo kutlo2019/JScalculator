@@ -1,4 +1,4 @@
-@import url('http://fonts.cdnfonts.com/css/led-digital-7');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
 body {
   margin: 0;
@@ -32,7 +32,7 @@ code {
   margin: 2rem auto;
   border: 1px solid black;
   background-color: beige;
-  font-family: 'LED Digital 7', sans-serif;
+  font-family: 'Orbitron', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -42,6 +42,8 @@ code {
 #answer {
   width: 100%;
   height: 25%;
+  text-align: right;
+  font-size: 60%;
 }
 
 #display-button {
