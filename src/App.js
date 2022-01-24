@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 class App extends React.Component {
   constructor(props) {
@@ -16,20 +16,19 @@ class App extends React.Component {
   }
 
   handleEquals() {
-    this.setState( state => {
-        const string = state.displayInput;
-        let answer = string
-        if (string.charAt(0) === '0') {
-          answer = string.substring(1);
-        }
-        const answerString = answer.slice(0,-1)
-        const answerInt = eval(answerString)
-        console.log(answerString);
-        return {
-          displayInput: answerInt,
-          answer: answer
-        }
+    this.setState(state => {
+      const string = state.displayInput;
+      let answer = string
+      if (string.charAt(0) === '0') {
+        answer = string.substring(1);
       }
+      const answerString = answer.slice(0, -1);
+      const answerInt = eval(answerString);
+      return {
+        displayInput: answerInt,
+        answer
+      }
+    }
     )
   }
 
@@ -41,25 +40,32 @@ class App extends React.Component {
   }
 
   handleDelete() {
-    this.setState( state => {
-        const newDisplay = state.displayInput.slice(0,-1);
-        return {
-          displayInput: newDisplay
-        }
+    this.setState(state => {
+      const newDisplay = state.displayInput.slice(0, -1);
+      return {
+        displayInput: newDisplay
       }
+    }
     )
   }
 
   handleClick(e) {
-    this.setState( state => {
-        return {
-          displayInput: state.displayInput + e.target.innerText
-        }
+    this.setState(state => {
+      let text = e.target.innerText
+      if (text === '\u00D7') // multiply
+        text = '*'
+      if (text === '\u00F7') // divide
+        text = '/'
+      if (text === '\u2212') // subtract
+        text = '-'
+      return {
+        displayInput: state.displayInput + text
       }
+    }
     )
   }
 
-  render () {
+  render() {
     return (
       <div className="App">
         <h1 id="header">JavaScript Calculator</h1>
@@ -67,7 +73,7 @@ class App extends React.Component {
           <div id="answer">{this.state.answer}</div>
           <div id="display-button">{this.state.displayInput}</div>
         </div>
-        <Buttons 
+        <Buttons
           handleClick={this.handleClick}
           handleDelete={this.handleDelete}
           clearScreen={this.clearScreen}
@@ -76,7 +82,7 @@ class App extends React.Component {
       </div>
     );
   }
-  
+
 }
 
 function Buttons(props) {
