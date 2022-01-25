@@ -1,5 +1,53 @@
 import React, { useEffect, useState } from "react";
 
+const oneToNine = [
+  {
+    num: 9,
+    id: "nine",
+    class: "number btn"
+  },
+  {
+    num: 8,
+    id: "eight",
+    class: "number btn"
+  },
+  {
+    num: 7,
+    id: "seven",
+    class: "number btn"
+  },
+  {
+    num: 6,
+    id: "six",
+    class: "number btn"
+  },
+  {
+    num: 5,
+    id: "five",
+    class: "number btn"
+  },
+  {
+    num: 4,
+    id: "four",
+    class: "number btn"
+  },
+  {
+    num: 3,
+    id: "three",
+    class: "number btn"
+  },
+  {
+    num: 2,
+    id: "two",
+    class: "number btn"
+  },
+  {
+    num: 1,
+    id: "one",
+    class: "number btn"
+  }
+]
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -68,11 +116,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1 id="header">JavaScript Calculator</h1>
-        <div className="display">
-          <div id="answer">{this.state.answer}</div>
-          <div id="display-button">{this.state.displayInput}</div>
-        </div>
+        <Header />
+        <Display 
+          answer={this.state.answer}
+          displayInput={this.state.displayInput}
+        />
         <Buttons
           handleClick={this.handleClick}
           handleDelete={this.handleDelete}
@@ -83,6 +131,21 @@ class App extends React.Component {
     );
   }
 
+}
+
+function Display(props) {
+  return (
+    <div className="display">
+    <div id="answer">{props.answer}</div>
+    <div id="display-button">{props.displayInput}</div> 
+    </div>
+  );
+}
+
+function Header() {
+  return (
+    <h1 id="header">JavaScript Calculator</h1>
+  );
 }
 
 function Buttons(props) {
@@ -101,33 +164,82 @@ function Buttons(props) {
 
   return (
     <div className="buttons">
-      <div className="numbers">
-        <div
-          className="number btn"
-          id="nine"
-        >9</div>
-        <div className="number btn" id="eight">8</div>
-        <div className="number btn" id="seven">7</div>
-        <div className="number btn" id="1">6</div>
-        <div className="number btn" id="1">5</div>
-        <div className="number btn" id="four">4</div>
-        <div className="number btn" id="three">3</div>
-        <div className="number btn" id="two">2</div>
-        <div className="number btn" id="one">1</div>
-      </div>
-      <div className="operations">
-        <button className="btn" id="multiply">{'\u00D7'}</button>
-        <button className="btn" id="divide">{'\u00F7'}</button>
-        <button className="btn" id="add">{'\u002B'}</button>
-        <button className="btn" id="subtract">{'\u2212'}</button>
-        <button className="number btn" id="zero">0</button>
-        <button className="btn" id="equals" onClick={props.handleEquals}>=</button>
-      </div>
+      <Numbers />
+      <Operations 
+        handleEquals={props.handleEquals}
+      />
       <div className="clean-up">
         <button onClick={props.handleDelete}>Del</button>
         <button onClick={props.clearScreen}>AC</button>
         <button>Off</button>
       </div>
+    </div>
+  );
+}
+
+const operations = [
+  {
+    operand: '\u00D7',
+    id: 'multiply',
+    class: 'btn'
+  },
+  {
+    operand: '\u00F7',
+    id: 'divide',
+    class: 'btn'
+  },
+  {
+    operand: '\u002B',
+    id: 'add',
+    class: 'btn'
+  },
+  {
+    operand: '\u2212',
+    id: 'subtract',
+    class: 'btn'
+  },
+  {
+    operand: 0,
+    id: 'zero',
+    class: 'number btn'
+  },
+  {
+    operand: '=',
+    id: 'equals',
+    class: 'btn'
+  },
+
+]
+
+function Operations(props) {
+  return (
+    <div className="operations">
+      {operations.map(operand => {
+        return (
+          <button
+            key={operand.id}
+            className={operand.class}
+            id={operand.id}
+          >{operand.operand}</button>
+        );
+      })}
+      <button className="btn" id="equals" onClick={props.handleEquals}>=</button>
+    </div>
+  );
+}
+
+function Numbers() {
+  return (
+    <div className="numbers">
+      {oneToNine.map(digit => {
+        return (
+          <div
+          key={digit.id}
+          className={digit.class}
+          id={digit.id}
+          >{digit.num}</div>
+        )
+      })}
     </div>
   );
 }
